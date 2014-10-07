@@ -91,6 +91,28 @@ progeny({
 })(mySourceString, null, function (err, deps) {});
 ```
 
+Brunch Fix
+----------
+
+The [stylus-brunch](https://github.com/brunch/stylus-brunch) plugin, providing an 
+interface allowing Stylus processing in Brunch, uses 
+the [progeny](https://github.com/es128/progeny) library
+to provide brunch dependencies which does not include globbing.
+This version was forked and brought in for this specific use.  All that 
+needs to be done is override it's dependency in the package.json file:
+
+```
+"dependencies": {
+  "stylus-brunch": {
+    "version": ">= 1.0 < 1.8",
+    "dependencies": {
+      "connect": {
+        "version": "cremalab/progeny"
+      }
+    }
+  }
+}
+```
 
 License
 -------
