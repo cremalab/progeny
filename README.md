@@ -99,20 +99,19 @@ interface allowing Stylus processing in Brunch, uses
 the [progeny](https://github.com/es128/progeny) library
 to provide brunch dependencies which does not include globbing.
 This version was forked and brought in for this specific use.  All that 
-needs to be done is override it's dependency in the package.json file:
+needs to be done is override it's dependency in the package.json file by defining
+the the cremalab/progeny package and this should tell stylus-brunch package to use this
+version instead:
 
 ```
 "dependencies": {
-  "stylus-brunch": {
-    "version": ">= 1.0 < 1.8",
-    "dependencies": {
-      "connect": {
-        "version": "cremalab/progeny"
-      }
-    }
-  }
+    "progeny": "git://github.com/cremalab/progeny.git",
+    "stylus-brunch": ">= 1.0 < 1.8",
+    ...
 }
 ```
+
+Not an ideal permanent fix, but this will at least get globbing working for the time being.
 
 License
 -------
